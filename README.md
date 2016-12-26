@@ -35,5 +35,5 @@ or your favourite vim plugin manager. The plugin is enabled by default.
 ## updatetime timer
 
 The updatetime option only work in vim version 8.0 and greater. In fact
-vim-airline-clock uses the native vim timer feature introducted in vim 8.0.
+vim-airline-clock uses the native vim timer feature introduced in vim 8.0.
 The advantage is that no hack is needed in order to refresh the statusline.
