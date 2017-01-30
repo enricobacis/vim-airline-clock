@@ -2,7 +2,7 @@
 [vim-airline](https://github.com/bling/vim-airline) clock extension -
 *for people that easily loose the sense of time in fullscreen vim sessions*
 
-![vim-airline-clock](https://github.com/enricobacis/vim-airline-clock/blob/master/.screenshot/vim-airline-clock.png)
+![vim-airline-clock](https://raw.github.com/enricobacis/vim-airline-clock/master/.screenshot/vim-airline-clock.png)
 
 ## requirements
 * [vim-airline](https://github.com/bling/vim-airline): This extension is
