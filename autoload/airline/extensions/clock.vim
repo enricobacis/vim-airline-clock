@@ -11,6 +11,10 @@ endif
 let g:loaded_vim_airline_clock = 1
 let s:spc = g:airline_symbols.space
 
+if !exists('g:airline#extensions#clock#auto')
+  let g:airline#extensions#clock#auto = 1
+endif
+
 if !exists('g:airline#extensions#clock#format')
   let g:airline#extensions#clock#format = '%H:%M'
 endif
@@ -21,7 +25,9 @@ endif
 
 function! airline#extensions#clock#init(ext)
   call airline#parts#define_raw('clock', '%{airline#extensions#clock#get()}')
-  call a:ext.add_statusline_func('airline#extensions#clock#apply')
+  if g:airline#extensions#clock#auto
+    call a:ext.add_statusline_func('airline#extensions#clock#apply')
+  endif
 endfunction
 
 function! airline#extensions#clock#apply(...)
