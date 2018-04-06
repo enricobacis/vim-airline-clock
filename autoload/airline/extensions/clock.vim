@@ -26,7 +26,10 @@ endfunction
 
 function! airline#extensions#clock#apply(...)
   let w:airline_section_z = get(w:, 'airline_section_z', g:airline_section_z)
-  let w:airline_section_z .= s:spc.g:airline_right_alt_sep.s:spc.'%{airline#extensions#clock#get()}'
+  if g:airline_right_alt_sep != ''
+    let w:airline_section_z .= s:spc.g:airline_right_alt_sep
+  endif
+  let w:airline_section_z .= s:spc.'%{airline#extensions#clock#get()}'
 endfunction
 
 function! airline#extensions#clock#get()
