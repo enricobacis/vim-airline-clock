@@ -38,8 +38,36 @@ function! airline#extensions#clock#apply(...)
   let w:airline_section_z .= s:spc.'%{airline#extensions#clock#get()}'
 endfunction
 
+function! s:current_clock_emoji()
+    let [l:hour, l:minutes] = split(strftime("%H %M"))
+    let l:clocks = [ ["🕛", "🕧"],
+                \ ["🕐", "🕜"],
+                \ ["🕑", "🕝"],
+                \ ["🕒", "🕞"],
+                \ ["🕓", "🕟"],
+                \ ["🕔", "🕠"],
+                \ ["🕕", "🕡"],
+                \ ["🕖", "🕢"],
+                \ ["🕗", "🕣"],
+                \ ["🕘", "🕤"],
+                \ ["🕙", "🕥"],
+                \ ["🕚", "🕦"] ]
+    " echo l:hour % 12
+    " echo l:minutes >= 30
+    return clocks[l:hour % 12][l:minutes >= 30]
+    " echo l:clocks
+endfunction
+
+if !exists('g:airline#extensions#clock#emoji')
+    let g:airline#extensions#clock#emoji = 1
+endif
+
 function! airline#extensions#clock#get()
-  return strftime(g:airline#extensions#clock#format)
+  let time = strftime(g:airline#extensions#clock#format)
+  if g:airline#extensions#clock#emoji
+    let time = trim(join([s:current_clock_emoji(), time], " "))
+  endif
+  return time
 endfunction
 
 if v:version < 800
