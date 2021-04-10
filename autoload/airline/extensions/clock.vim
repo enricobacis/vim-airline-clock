@@ -53,3 +53,7 @@ endfunction
 let g:airline#extensions#clock#timer = timer_start(
       \ g:airline#extensions#clock#updatetime,
       \ 'airline#extensions#clock#timerfn',{'repeat':-1})
+
+" Pause the timer when Airline is disabled, un-pause when it's re-enabled
+autocmd User AirlineToggledOff call timer_pause(g:airline#extensions#clock#timer, 1)
+autocmd User AirlineToggledOn call timer_pause(g:airline#extensions#clock#timer, 0)
