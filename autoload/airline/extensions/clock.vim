@@ -47,7 +47,9 @@ if v:version < 800
 endif
 
 function! airline#extensions#clock#timerfn(timer)
-  call airline#update_statusline()
+  if mode() !=? "c" && g:airline_mode_map.multi !=? w:airline_current_mode
+    call airline#update_statusline()
+  endif
 endfunction
 
 let g:airline#extensions#clock#timer = timer_start(
